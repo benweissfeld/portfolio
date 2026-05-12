@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ben Weissfeld — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      /* Resolved at runtime by App.jsx based on tweaks */
+      --bg: #0a0a09;
+      --bg-1: #131311;
+      --bg-2: #1d1d1a;
+      --line: rgba(255,255,255,0.08);
+      --line-strong: rgba(255,255,255,0.18);
+      --fg: #f7f6f3;
+      --fg-2: #c9c7c0;
+      --fg-3: #8d8a82;
+      --fg-4: #555049;
+      --accent: oklch(0.68 0.14 158);
+      --accent-ink: #0a0a09;
+      --radius: 14px;
+      --container: 1180px;
+      --gap-y: clamp(80px, 12vw, 160px);
+      --pad-x: clamp(20px, 4vw, 48px);
+
+      --f-display: 'Geist', 'Helvetica Neue', system-ui, sans-serif;
+      --f-body:    'Geist', 'Helvetica Neue', system-ui, sans-serif;
+      --f-mono:    'Geist Mono', ui-monospace, monospace;
+      --display-weight: 600;
+      --display-letter: -0.035em;
+      --display-italic: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { background: var(--bg); }
+    body {
+      font-family: var(--f-body);
+      color: var(--fg);
+      background: var(--bg);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      transition: background 220ms ease, color 220ms ease;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    .mono { font-family: var(--f-mono); font-feature-settings: 'ss01'; }
+
+    /* Background textures */
+    .bg-shell {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+    .bg-shell.grid {
+      background-image:
+        linear-gradient(to right, var(--line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 80%);
+    }
+    .bg-shell.dots {
+      background-image: radial-gradient(var(--line-strong) 1px, transparent 1.4px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at 50% 30%, black 30%, transparent 75%);
+    }
+    .bg-shell.noise {
+      background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      opacity: 0.06; mix-blend-mode: overlay;
+    }
+    body.theme-light .bg-shell.noise { mix-blend-mode: multiply; opacity: 0.08; }
+
+    /* Cursor effects */
+    .cursor-dot, .cursor-ring {
+      position: fixed; top: 0; left: 0; pointer-events: none;
+      z-index: 2147483645;
+      will-change: transform;
+      transition: opacity 200ms ease, transform 80ms ease-out, width 200ms, height 200ms, border-color 200ms;
+    }
+    .cursor-dot {
+      width: 6px; height: 6px; border-radius: 999px;
+      background: var(--fg);
+      margin: -3px 0 0 -3px;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px; border-radius: 999px;
+      border: 1px solid var(--fg-3);
+      margin: -18px 0 0 -18px;
+      mix-blend-mode: difference;
+    }
+    body.cur-hover .cursor-ring { width: 64px; height: 64px; margin: -32px 0 0 -32px; border-color: var(--accent); }
+    body.cur-hover .cursor-dot { transform: scale(0); }
+    body[data-cursor="native"] .cursor-dot,
+    body[data-cursor="native"] .cursor-ring { display: none; }
+    body[data-cursor="dot"] .cursor-ring { display: none; }
+    body[data-cursor="ring"] .cursor-dot { display: none; }
+
+    /* Density */
+    body[data-density="airy"]    { --gap-y: clamp(120px, 16vw, 220px); }
+    body[data-density="regular"] { --gap-y: clamp(80px, 12vw, 160px); }
+    body[data-density="compact"] { --gap-y: clamp(56px, 8vw, 112px); }
+
+    /* Typography */
+    .display {
+      font-family: var(--f-display);
+      font-weight: var(--display-weight);
+      letter-spacing: var(--display-letter);
+      font-style: var(--display-italic);
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+    .display em {
+      font-family: 'Instrument Serif', 'Newsreader', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    body[data-type="editorial"] .display em,
+    body[data-type="newsreader"] .display em {
+      font-weight: 400;
+    }
+
+    /* Reusable */
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      font-family: var(--f-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fg-3);
+    }
+    .divider { height: 1px; background: var(--line); border: 0; margin: 0; }
+    .rule-mono {
+      display: flex; align-items: center; gap: 16px;
+      color: var(--fg-3); font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .rule-mono::after {
+      content: ''; flex: 1; height: 1px; background: var(--line);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px; height: 44px; padding: 0 22px;
+      border-radius: 999px;
+      font-size: 14px; font-weight: 500;
+      transition: all 180ms ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    body[data-cursor="native"] .btn { cursor: pointer; }
+    .btn.primary {
+      background: var(--fg); color: var(--bg);
+    }
+    .btn.primary:hover { background: var(--accent); color: var(--accent-ink); }
+    .btn.ghost {
+      background: transparent; color: var(--fg);
+      border-color: var(--line-strong);
+    }
+    .btn.ghost:hover { border-color: var(--fg-2); background: var(--bg-1); }
+    .btn.accent {
+      background: var(--accent); color: var(--accent-ink);
+    }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 28px; padding: 0 12px; border-radius: 999px;
+      font-family: var(--f-mono); font-size: 11px;
+      letter-spacing: 0.06em;
+      background: var(--bg-1); color: var(--fg-2);
+      border: 1px solid var(--line);
+    }
+    .dot-live { display: none; }
+
+    /* Focus / motion */
+    .fade-in {
+      animation: fadeUp 700ms cubic-bezier(.2,.7,.2,1) both;
+    }
+    .fade-in.d1 { animation-delay: 80ms; }
+    .fade-in.d2 { animation-delay: 160ms; }
+    .fade-in.d3 { animation-delay: 240ms; }
+    .fade-in.d4 { animation-delay: 320ms; }
+    .fade-in.d5 { animation-delay: 400ms; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translate3d(0, 14px, 0); }
+      to   { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in, .fade-in * { animation: none !important; }
+    }
+
+    /* Selection */
+    ::selection { background: var(--accent); color: var(--accent-ink); }
+
+    /* Page transition */
+    .page-anim { animation: pageEnter 600ms cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translate3d(0, 12px, 0); }
+      to   { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    /* Project grids */
+    .sel-grid-img { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 32px; }
+    @media (max-width: 760px) { .sel-grid-img { grid-template-columns: 1fr; gap: 48px 0; } }
+    .sel-grid-list { display: flex; flex-direction: column; }
+    .sel-grid-mason { columns: 2; column-gap: 32px; }
+    @media (max-width: 760px) { .sel-grid-mason { columns: 1; } }
+  </style>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+</head>
+<body data-density="regular" data-cursor="native" data-type="neo">
+
+  <div class="bg-shell" id="bg-texture"></div>
+  <div class="cursor-ring" id="cur-ring"></div>
+  <div class="cursor-dot"  id="cur-dot"></div>
+
+  <div id="root"></div>
+
+  <script src="data.js?v=2"></script>
+  <script src="tweaks-panel.js?v=2"></script>
+  <script src="art.js?v=2"></script>
+  <script src="components.js?v=2"></script>
+  <script src="pages.js?v=2"></script>
+  <script src="app.js?v=2"></script>
+</body>
+</html>
