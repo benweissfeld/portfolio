@@ -135,10 +135,10 @@ function App() {
       <CursorTracker />
       <NavBar page={page} go={go} onContact={openContact} />
 
-      {page === 'home'    && <HomePage    go={go} openProject={openProject} tweaks={t} />}
-      {page === 'works'   && <WorksPage   go={go} openProject={openProject} tweaks={t} />}
-      {page === 'about'   && <AboutPage   go={go} />}
-      {page === 'project' && <ProjectPage projectId={projectId} go={go} openProject={openProject} />}
+      {page === 'home'    && <HomePage    go={go} openProject={openProject} onContact={openContact} tweaks={t} />}
+      {page === 'works'   && <WorksPage   go={go} openProject={openProject} onContact={openContact} tweaks={t} />}
+      {page === 'about'   && <AboutPage   go={go} onContact={openContact} />}
+      {page === 'project' && <ProjectPage projectId={projectId} go={go} openProject={openProject} onContact={openContact} />}
 
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
 

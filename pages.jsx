@@ -4,7 +4,7 @@ const { useState: useStateP, useEffect: useEffectP, useMemo: useMemoP } = React;
 
 /* ─── HOME ─────────────────────────────────────────────────────── */
 
-function HomePage({ go, openProject, tweaks }) {
+function HomePage({ go, openProject, onContact, tweaks }) {
   const { persona, projects } = window.PORTFOLIO;
   const featured = projects.slice(0, 3);
   const heroLayout = tweaks.heroLayout;
@@ -22,7 +22,7 @@ function HomePage({ go, openProject, tweaks }) {
 
       <Marquee />
 
-      <Footer go={go} onContact={() => null} />
+      <Footer go={go} onContact={onContact} />
     </div>
   );
 }
@@ -59,10 +59,10 @@ function HeroLeft({ persona, go }) {
           <em>Building</em> things.
         </h1>
         <p className="lede fade-in d2">
-          Operator, builder, AI-native. I work where strategy meets shipped product.
-          I'm {persona.first} — finishing my MBA at Kellogg, with seven years operating
-          next to decision-makers under pressure: military intelligence, law, adtech,
-          a stealth AI startup.
+          I'm {persona.first}, finishing my MBA at Kellogg and working at the intersection
+          of strategy, marketing, analytics, and AI. My path has taken me through messy,
+          high-pressure environments where first-principles thinking helped me turn
+          ambiguity into clear, data-driven decisions and action.
         </p>
         <div className="hero-cta fade-in d3">
           <button className="btn primary" onClick={() => go('works')}>See works <span aria-hidden>→</span></button>
@@ -314,7 +314,7 @@ function Marquee() {
 
 /* ─── WORKS ────────────────────────────────────────────────────── */
 
-function WorksPage({ go, openProject, tweaks }) {
+function WorksPage({ go, openProject, onContact, tweaks }) {
   const { projects } = window.PORTFOLIO;
   const variant = tweaks.cardStyle;
   return (
@@ -334,9 +334,7 @@ function WorksPage({ go, openProject, tweaks }) {
           <p className="fade-in d2" style={{
             color: 'var(--fg-2)', maxWidth: '60ch', fontSize: 18, margin: 0,
           }}>
-            A complete index of AI-native products built solo. frug. is the flagship; the
-            others are the proof the impulse generalizes. Every entry written up the same
-            way: problem, approach, outcome.
+            The whole shelf. Here are the products / processes i've been leading last year with AI
           </p>
         </div>
       </section>
@@ -355,14 +353,14 @@ function WorksPage({ go, openProject, tweaks }) {
         </div>
       </section>
 
-      <Footer go={go} onContact={() => null} />
+      <Footer go={go} onContact={onContact} />
     </div>
   );
 }
 
 /* ─── PROJECT DETAIL ───────────────────────────────────────────── */
 
-function ProjectPage({ projectId, go, openProject }) {
+function ProjectPage({ projectId, go, openProject, onContact }) {
   const { projects } = window.PORTFOLIO;
   const p = projects.find(x => x.id === projectId) || projects[0];
   const i = projects.findIndex(x => x.id === p.id);
@@ -508,8 +506,8 @@ function ProjectPage({ projectId, go, openProject }) {
           <div className="grid">
             <h2>The brief</h2>
             <div className="prose">
-              <p>{p.problem}</p>
-              {p.approach && <p>{p.approach}</p>}
+              {p.problem.split('\n\n').map((para, i) => <p key={`pr-${i}`}>{para}</p>)}
+              {p.approach && p.approach.split('\n\n').map((para, i) => <p key={`ap-${i}`}>{para}</p>)}
             </div>
           </div>
         </div>
@@ -563,14 +561,14 @@ function ProjectPage({ projectId, go, openProject }) {
         </div>
       </section>
 
-      <Footer go={go} onContact={() => null} />
+      <Footer go={go} onContact={onContact} />
     </div>
   );
 }
 
 /* ─── ABOUT ────────────────────────────────────────────────────── */
 
-function AboutPage({ go }) {
+function AboutPage({ go, onContact }) {
   const { persona } = window.PORTFOLIO;
   const skills = {
     'Build': [
@@ -600,8 +598,9 @@ function AboutPage({ go }) {
         }
         .ab-hero h1 {
           font-family: var(--f-display); font-weight: var(--display-weight);
-          letter-spacing: var(--display-letter); line-height: 0.95;
-          font-size: clamp(56px, 11vw, 196px); margin: 40px 0 32px;
+          letter-spacing: var(--display-letter); line-height: 0.98;
+          font-size: clamp(36px, 6vw, 88px); margin: 40px 0 32px;
+          max-width: 18ch; text-wrap: balance;
         }
         .ab-hero h1 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
         .ab-hero .lede {
@@ -641,7 +640,7 @@ function AboutPage({ go }) {
             <span>AI-NATIVE BUILDER</span>
           </div>
           <h1 className="fade-in d1">
-            Hello<em>.</em>
+            the part where I <em>describe myself.</em>
           </h1>
           <div className="lede">
             <div className="ab-portrait fade-in d2">
@@ -651,7 +650,6 @@ function AboutPage({ go }) {
               {persona.long.map((par, i) => <p key={i}>{par}</p>)}
               <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
                 <a className="btn primary" href={`mailto:${persona.email}`}>Email me ↗</a>
-                <a className="btn ghost" href="#">Download CV (PDF)</a>
               </div>
             </div>
           </div>
@@ -674,7 +672,7 @@ function AboutPage({ go }) {
         </div>
       </section>
 
-      <Footer go={go} onContact={() => null} />
+      <Footer go={go} onContact={onContact} />
     </div>
   );
 }

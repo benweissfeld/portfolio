@@ -146,9 +146,7 @@ function Footer({
   }, NAV_ITEMS.map(n => /*#__PURE__*/React.createElement("a", {
     key: n.id,
     onClick: () => go(n.id)
-  }, n.label)), /*#__PURE__*/React.createElement("a", {
-    onClick: onContact
-  }, "Contact"))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Elsewhere"), /*#__PURE__*/React.createElement("div", {
+  }, n.label)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", null, "Elsewhere"), /*#__PURE__*/React.createElement("div", {
     className: "footer-list"
   }, persona.socials.map(s => /*#__PURE__*/React.createElement("a", {
     key: s.label,

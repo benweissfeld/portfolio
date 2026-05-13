@@ -11,9 +11,10 @@ window.PORTFOLIO = {
     blurb:
       "Operator, builder, AI-native. I work where strategy meets shipped product — and I'd rather prove an idea than pitch it.",
     long: [
-      "I'm Ben. I'm finishing my MBA at Kellogg, and the throughline of my career so far has been getting dropped into ambiguous problems and figuring out how to ship something useful. Military intelligence, civil litigation, programmatic adtech, a stealth AI startup — different worlds, same instinct.",
-      "I treat AI as a building material, not a buzzword. My projects usually start the same way: I notice a workflow that's clunky or a question nobody's actually answering well, and I prototype my way to whether an LLM can change the shape of it. Sometimes that's a consumer product. Sometimes it's a tool I built for myself first. Sometimes it's an audio thing or a game. The shape varies; the impulse is the same.",
-      "I came to the US from Israel for the MBA, so a chunk of this year has also been about building a new life in a new city. Turns out that's its own kind of 0-to-1 project.",
+      "I'm Ben, finishing my MBA at Kellogg, and I'm usually drawn to the kind of work that sits between big questions and practical execution.",
+      "My path's been a non-obvious one. I've moved through very different environments — military, legal, performance marketing, startups, and business school — and somehow I keep ending up in messy, ambiguous situations where I'm asked to make sense of things with limited time and incomplete information. Most of what I've gotten good at, I learned in that loop.",
+      "I'm drawn to problems that don't arrive neatly packaged. I like breaking complexity down to first principles, finding the signal inside it, and turning it into something a team can actually act on. I care about clear thinking, useful products, and work that feels connected to real people and real situations.",
+      "Outside of work, I'm usually following basketball, exploring new places, or thinking about consumer behavior more than is probably normal.",
     ],
     socials: [
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ben-weissfeld/', short: 'in'  },
@@ -36,9 +37,9 @@ window.PORTFOLIO = {
       summary:
         "The savings app that meets you at checkout. Real-time, LLM-powered, built solo.",
       problem:
-        "frug. is the consumer fintech app I wish existed. Every personal finance tool I've used tells you what you already spent — Mint, your bank app, the monthly summary email. The decision moment is checkout, and nothing meets you there with anything useful.",
+        "frug. is the consumer fintech app I wish existed.\n\nEvery personal finance tool I've used tells you what you already spent. Mint, your bank app, the friendly little monthly summary email — they all show up after the money's gone. They turn personal finance into a postmortem. And the thing is, by the time you're reading the summary, the decision is six weeks old. You can't undo it. You can only feel slightly worse about it.\n\nThe actual decision moment is checkout. That's where the money moves. That's where nudges would matter. And nothing meets you there with anything useful.",
       approach:
-        "frug. does. It watches what you're about to buy, reads your actual spending behavior through a live Plaid integration, and uses an LLM to generate a real-time nudge — grounded in your behavior, not generic advice. I built it end-to-end: product, design, code, integrations. It's the project I'm proudest of, because everything I care about — AI as building material, shipping solo, finding the gap nobody's filling — shows up in it.",
+        "frug. does.\n\nIt lives in the browser. When you're about to buy something — checking out on Amazon, on a DTC site, on a flight booking — frug. notices. It cross-references what you're about to spend against how you actually spend your money, pulled live from your accounts through a Plaid integration. Then it uses an LLM to generate a single nudge: short, specific, grounded in your behavior. Not \"consider whether you need this\" — something like \"you've spent $340 on takeout this month, and this is $52. Worth it?\" Or sometimes: \"actually, this is well below your average — go ahead.\"\n\nThe point isn't to guilt you out of buying things. The point is to put a small, honest signal between you and the click — the kind of signal a friend who saw your bank account would give you. Cheap to ignore. Easy to act on. And tuned to you, not a generic budgeting heuristic.\n\nUnder the hood: live Plaid integration for the spending data, an LLM for the nudge, a browser extension as the surface. I built every layer of it — product thinking, design, code, integrations, prompts. No team, no funding, no co-founder. Just me figuring out one piece at a time and shipping the next thing.\n\nIt's the project I'm proudest of, because everything I care about shows up in it. AI as a building material, not a feature you bolt on. Shipping solo and learning by doing. Finding the gap nobody's filling — the moment between \"I want this\" and \"I bought this\" — and putting something useful in it.\n\nIt's still early. I'm dogfooding it, iterating on the nudge logic, and figuring out what changes when the AI actually knows you. So far: more than I expected.",
       outcome: [
         ['Plaid',    'live API integration, shipped end-to-end, solo'],
         ['0→1',      'idea to working product, no team, no funding'],
@@ -123,6 +124,7 @@ window.PORTFOLIO = {
     },
     {
       id: 'bose-presence',
+      images: [],
       title: 'Bose Presence',
       client: 'Kellogg AIML 901 · course engagement',
       category: 'Consumer · AI-driven marketing strategy',
@@ -131,11 +133,11 @@ window.PORTFOLIO = {
       span: '~10 weeks',
       tags: ['LLMs', 'K-Means segmentation', 'Synthetic ICP generation', 'Creative testing', 'Statistical analysis'],
       summary:
-        "A simulated marketing engagement, done AI-native. LLM as research partner, not just writer.",
+        "A full-cycle AI marketing engagement, from segmentation to executive memo.",
       problem:
-        "This was a course-based engagement at Kellogg, but I treated it like the lab experiment I actually wanted to run: what does strategy work look like when the LLM is a research partner across the whole cycle, not just at the writing stage?",
+        "A simulated internship inside Kellogg's AI & Machine Learning for Marketing course (AIML 901), structured as a full-cycle marketing engagement for Bose: develop a new product, position it, price it, prove it.\n\nI treated the LLM as a research partner across every stage of the work, not just a writing assistant at the end. The output was a complete marketing artifact — and an honest test of what AI-native marketing actually looks like when you commit to it from segmentation through to the executive memo.",
       approach:
-        "The output was a complete marketing artifact for Bose — deep research, K-Means quantitative segmentation, a qualitative ICP I called 'Jordan — The Premium Believer,' a $329 AI-powered earbud concept ('Bose Presence'), a creative asset test with statistical analysis, and a structured executive memo. The answer to the lab question: yes, faster — and the rigor goes up if you treat the model like a partner instead of a shortcut.",
+        "The work, in order:\n\n1. Deep research — built the foundational view of Bose's market position, competitive set, and brand equity. LLMs did the heavy lifting on synthesis across analyst reports, press, product reviews, and earnings calls. I directed the queries and stress-tested the conclusions.\n\n2. K-Means quantitative segmentation — clustered the consumer audio market into distinct buyer segments using behavioral and attitudinal data. The model surfaced the segments; I named them, interpreted them, and made the strategic call on which one to pursue.\n\n3. ICP development — \"Jordan, The Premium Believer\" — a qualitative persona built on top of the K-Means output. Jordan is the buyer who believes premium audio is worth premium prices and wants the product to feel like an upgrade in their life, not just their ears. LLM-assisted persona development, but the strategic distinction — Premium Believer vs. Premium Skeptic — was the call that shaped everything downstream.\n\n4. Product concept — \"Bose Presence\" — a $329 AI-powered earbud concept built specifically for Jordan. Price point, feature set, and positioning all derived from the segmentation and ICP work, not invented and then justified.\n\n5. Creative asset test with statistical analysis — generated multiple creative directions, tested them in a structured experiment, and ran the statistical analysis to identify which message and visual actually moved Jordan. Real significance testing, not vibes.\n\n6. Executive memo, structured as 3-Whats — what we found, what it means, what to do. Tight, decision-oriented, written for a CMO who has eight minutes.\n\nWhat this project proves about how I work:\n\nI can run a marketing arc end-to-end — segmentation, positioning, pricing, creative, decision memo — and I use AI as a building material at every step, not just to write the final draft. The model is a research partner, a synthesis engine, and a creative generator. The judgment — which segment matters, what the ICP actually wants, what the executive needs to hear — stays with me. That division of labor is the whole game in modern marketing, and most teams haven't figured it out yet.",
       outcome: [
         ['ICP',     'LLM-assisted synthesis from qual + quant, not summarization'],
         ['$329',    'concept priced and positioned against a validated segment'],

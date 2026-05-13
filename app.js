@@ -151,17 +151,21 @@ function App() {
   }), page === 'home' && /*#__PURE__*/React.createElement(HomePage, {
     go: go,
     openProject: openProject,
+    onContact: openContact,
     tweaks: t
   }), page === 'works' && /*#__PURE__*/React.createElement(WorksPage, {
     go: go,
     openProject: openProject,
+    onContact: openContact,
     tweaks: t
   }), page === 'about' && /*#__PURE__*/React.createElement(AboutPage, {
-    go: go
+    go: go,
+    onContact: openContact
   }), page === 'project' && /*#__PURE__*/React.createElement(ProjectPage, {
     projectId: projectId,
     go: go,
-    openProject: openProject
+    openProject: openProject,
+    onContact: openContact
   }), /*#__PURE__*/React.createElement(ContactModal, {
     open: contactOpen,
     onClose: () => setContactOpen(false)

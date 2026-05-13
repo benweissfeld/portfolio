@@ -118,7 +118,6 @@ function Footer({ go, onContact }) {
               {NAV_ITEMS.map(n => (
                 <a key={n.id} onClick={() => go(n.id)}>{n.label}</a>
               ))}
-              <a onClick={onContact}>Contact</a>
             </div>
           </div>
           <div>

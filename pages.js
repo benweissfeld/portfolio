@@ -11,6 +11,7 @@ const {
 function HomePage({
   go,
   openProject,
+  onContact,
   tweaks
 }) {
   const {
@@ -42,7 +43,7 @@ function HomePage({
     go: go
   }), /*#__PURE__*/React.createElement(Marquee, null), /*#__PURE__*/React.createElement(Footer, {
     go: go,
-    onContact: () => null
+    onContact: onContact
   }));
 }
 function HeroLeft({
@@ -81,7 +82,7 @@ function HeroLeft({
     className: "display fade-in d1"
   }, /*#__PURE__*/React.createElement("em", null, "Building"), " things."), /*#__PURE__*/React.createElement("p", {
     className: "lede fade-in d2"
-  }, "Operator, builder, AI-native. I work where strategy meets shipped product. I'm ", persona.first, " \u2014 finishing my MBA at Kellogg, with seven years operating next to decision-makers under pressure: military intelligence, law, adtech, a stealth AI startup."), /*#__PURE__*/React.createElement("div", {
+  }, "I'm ", persona.first, ", finishing my MBA at Kellogg and working at the intersection of strategy, marketing, analytics, and AI. My path has taken me through messy, high-pressure environments where first-principles thinking helped me turn ambiguity into clear, data-driven decisions and action."), /*#__PURE__*/React.createElement("div", {
     className: "hero-cta fade-in d3"
   }, /*#__PURE__*/React.createElement("button", {
     className: "btn primary",
@@ -380,6 +381,7 @@ function Marquee() {
 function WorksPage({
   go,
   openProject,
+  onContact,
   tweaks
 }) {
   const {
@@ -419,7 +421,7 @@ function WorksPage({
       fontSize: 18,
       margin: 0
     }
-  }, "A complete index of AI-native products built solo. frug. is the flagship; the others are the proof the impulse generalizes. Every entry written up the same way: problem, approach, outcome."))), /*#__PURE__*/React.createElement("section", {
+  }, "The whole shelf. Here are the products / processes i've been leading last year with AI"))), /*#__PURE__*/React.createElement("section", {
     style: {
       paddingBottom: 'var(--gap-y)'
     }
@@ -435,7 +437,7 @@ function WorksPage({
     onOpen: openProject
   }))))), /*#__PURE__*/React.createElement(Footer, {
     go: go,
-    onContact: () => null
+    onContact: onContact
   }));
 }
 
@@ -444,7 +446,8 @@ function WorksPage({
 function ProjectPage({
   projectId,
   go,
-  openProject
+  openProject,
+  onContact
 }) {
   const {
     projects
@@ -610,7 +613,11 @@ function ProjectPage({
     className: "grid"
   }, /*#__PURE__*/React.createElement("h2", null, "The brief"), /*#__PURE__*/React.createElement("div", {
     className: "prose"
-  }, /*#__PURE__*/React.createElement("p", null, p.problem), p.approach && /*#__PURE__*/React.createElement("p", null, p.approach))))), (p.images?.length ?? 2) > 0 && /*#__PURE__*/React.createElement("div", {
+  }, p.problem.split('\n\n').map((para, i) => /*#__PURE__*/React.createElement("p", {
+    key: `pr-${i}`
+  }, para)), p.approach && p.approach.split('\n\n').map((para, i) => /*#__PURE__*/React.createElement("p", {
+    key: `ap-${i}`
+  }, para)))))), (p.images?.length ?? 2) > 0 && /*#__PURE__*/React.createElement("div", {
     className: `proj-detail-strip${p.images?.length === 1 ? ' single' : ''}`
   }, /*#__PURE__*/React.createElement("div", {
     className: "frame"
@@ -688,14 +695,15 @@ function ProjectPage({
     project: next
   }))))), /*#__PURE__*/React.createElement(Footer, {
     go: go,
-    onContact: () => null
+    onContact: onContact
   }));
 }
 
 /* ─── ABOUT ────────────────────────────────────────────────────── */
 
 function AboutPage({
-  go
+  go,
+  onContact
 }) {
   const {
     persona
@@ -716,8 +724,9 @@ function AboutPage({
         }
         .ab-hero h1 {
           font-family: var(--f-display); font-weight: var(--display-weight);
-          letter-spacing: var(--display-letter); line-height: 0.95;
-          font-size: clamp(56px, 11vw, 196px); margin: 40px 0 32px;
+          letter-spacing: var(--display-letter); line-height: 0.98;
+          font-size: clamp(36px, 6vw, 88px); margin: 40px 0 32px;
+          max-width: 18ch; text-wrap: balance;
         }
         .ab-hero h1 em { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
         .ab-hero .lede {
@@ -758,7 +767,7 @@ function AboutPage({
     }
   }), /*#__PURE__*/React.createElement("span", null, "KELLOGG MBA \xB7 2026"), /*#__PURE__*/React.createElement("span", null, "AI-NATIVE BUILDER")), /*#__PURE__*/React.createElement("h1", {
     className: "fade-in d1"
-  }, "Hello", /*#__PURE__*/React.createElement("em", null, ".")), /*#__PURE__*/React.createElement("div", {
+  }, "the part where I ", /*#__PURE__*/React.createElement("em", null, "describe myself.")), /*#__PURE__*/React.createElement("div", {
     className: "lede"
   }, /*#__PURE__*/React.createElement("div", {
     className: "ab-portrait fade-in d2"
@@ -779,10 +788,7 @@ function AboutPage({
   }, /*#__PURE__*/React.createElement("a", {
     className: "btn primary",
     href: `mailto:${persona.email}`
-  }, "Email me \u2197"), /*#__PURE__*/React.createElement("a", {
-    className: "btn ghost",
-    href: "#"
-  }, "Download CV (PDF)")))))), /*#__PURE__*/React.createElement("section", {
+  }, "Email me \u2197")))))), /*#__PURE__*/React.createElement("section", {
     className: "ab-section"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
@@ -798,7 +804,7 @@ function AboutPage({
     className: "pill"
   }, t)))))))), /*#__PURE__*/React.createElement(Footer, {
     go: go,
-    onContact: () => null
+    onContact: onContact
   }));
 }
 Object.assign(window, {
