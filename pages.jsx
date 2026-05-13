@@ -70,7 +70,7 @@ function HeroLeft({ persona, go }) {
         </div>
         <div className="hero-meta fade-in d4">
           <div><span className="eyebrow">MBA</span><b>Kellogg · 2026</b></div>
-          <div><span className="eyebrow">Open to</span><b>AI roles · Q3 2026</b></div>
+          <div><span className="eyebrow">Open to</span><b>High ownership roles</b></div>
           <div><span className="eyebrow">Flagship</span><b>frug. — checkout nudges</b></div>
         </div>
       </div>

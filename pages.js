@@ -98,7 +98,7 @@ function HeroLeft({
     className: "eyebrow"
   }, "MBA"), /*#__PURE__*/React.createElement("b", null, "Kellogg \xB7 2026")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
     className: "eyebrow"
-  }, "Open to"), /*#__PURE__*/React.createElement("b", null, "AI roles \xB7 Q3 2026")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
+  }, "Open to"), /*#__PURE__*/React.createElement("b", null, "High ownership roles")), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
     className: "eyebrow"
   }, "Flagship"), /*#__PURE__*/React.createElement("b", null, "frug. \u2014 checkout nudges")))));
 }
