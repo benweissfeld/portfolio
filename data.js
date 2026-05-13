@@ -11,8 +11,8 @@ window.PORTFOLIO = {
     blurb:
       "Operator, builder, AI-native. I work where strategy meets shipped product — and I'd rather prove an idea than pitch it.",
     long: [
-      "I'm Ben, finishing my MBA at Kellogg, and I'm usually drawn to the kind of work that sits between big questions and practical execution.",
-      "My path's been a non-obvious one. I've moved through very different environments — military, legal, performance marketing, startups, and business school — and somehow I keep ending up in messy, ambiguous situations where I'm asked to make sense of things with limited time and incomplete information. Most of what I've gotten good at, I learned in that loop.",
+      "I'm Ben, finishing my MBA at Kellogg, and I'm usually drawn to the kind of work that sits between big questions and practical execution — usually at the intersection of strategy, marketing, and AI.",
+      "My path's been a non-obvious one. I've moved through very different environments; military, legal, performance marketing, startups, and business school, and somehow I keep ending up in messy, ambiguous situations where I'm asked to make sense of things with limited time and incomplete information. Most of what I've gotten good at, I learned in that loop.",
       "I'm drawn to problems that don't arrive neatly packaged. I like breaking complexity down to first principles, finding the signal inside it, and turning it into something a team can actually act on. I care about clear thinking, useful products, and work that feels connected to real people and real situations.",
       "Outside of work, I'm usually following basketball, exploring new places, or thinking about consumer behavior more than is probably normal.",
     ],
@@ -29,11 +29,11 @@ window.PORTFOLIO = {
       images: ['uploads/frug2.png', 'uploads/frug3.png'],
       title: 'frug.',
       client: 'Self-initiated',
-      category: 'Consumer · Fintech browser extension',
+      category: 'Product · Consumer fintech',
       year: '2025',
       role: 'Sole builder — product, design, build, integrations',
       span: 'Ongoing',
-      tags: ['Plaid API', 'LLMs', 'Browser extension', 'Behavioral signals', 'Prompt engineering'],
+      tags: ['Consumer fintech', '0-to-1 product', 'Plaid API', 'Anthropic API', 'LLMs', 'Real-time AI', 'Behavioral nudges', 'Browser extension', 'Prompt engineering', 'Solo build'],
       summary:
         "The savings app that meets you at checkout. Real-time, LLM-powered, built solo.",
       problem:
@@ -54,11 +54,11 @@ window.PORTFOLIO = {
       images: ['uploads/tama2.png'],
       title: 'Tamagotchi Celeb',
       client: 'Self-initiated',
-      category: 'Consumer · LLM-powered game',
+      category: 'Creative · Conversational AI game',
       year: '2025',
       role: 'Sole builder',
       span: 'A few weeks',
-      tags: ['LLMs', 'Character prompting', 'Persistent state', 'React'],
+      tags: ['Conversational AI', 'Character prompting', 'Persona engineering', 'LLMs', 'Anthropic API', 'Game design', 'Persistent state', 'React'],
       summary:
         "The pet turned into your favorite movie character.",
       problem:
@@ -78,11 +78,11 @@ window.PORTFOLIO = {
       images: [],
       title: 'Segue Audio',
       client: 'Self-initiated',
-      category: 'Consumer · Web audio tool',
+      category: 'Engineering · Browser audio tool',
       year: '2026',
       role: 'Sole builder',
       span: 'Day 0 — working prototype',
-      tags: ['React', 'Web Audio API', 'BPM detection', 'EQ automation', 'Client-side audio processing'],
+      tags: ['Consumer product', '0-to-1 prototype', 'Audio engineering', 'Web Audio API', 'BPM detection', 'EQ automation', 'Client-side processing', 'React', 'Audio ML (roadmap)'],
       summary:
         "Smart auto-mix for the rest of us.",
       problem:
@@ -103,11 +103,11 @@ window.PORTFOLIO = {
       images: [],
       title: 'GotFit?',
       client: 'Self-initiated',
-      category: 'Productivity · Chrome extension',
+      category: 'Productivity · AI Chrome extension',
       year: '2026',
       role: 'Sole builder',
       span: 'A few weeks',
-      tags: ['Chrome extension', 'TypeScript', 'Anthropic API', 'Resume parsing', 'JD analysis'],
+      tags: ['Productivity tooling', 'AI Chrome extension', 'Anthropic API', 'LLMs', 'Prompt engineering', 'Resume parsing', 'JD analysis', 'Self-built tool', 'TypeScript'],
       summary:
         "The JD-to-resume fit checker I built for myself. One click. Honest answers.",
       problem:
@@ -124,14 +124,16 @@ window.PORTFOLIO = {
     },
     {
       id: 'bose-presence',
-      images: [],
+      video: 'uploads/bose-hero.mp4',
+      images: ['uploads/bose-detail-1.png', 'uploads/bose-detail-2.png'],
+      imagesPositions: ['top', 'center'],
       title: 'Bose Presence',
       client: 'Kellogg AIML 901 · course engagement',
-      category: 'Consumer · AI-driven marketing strategy',
+      category: 'Marketing strategy · Full-cycle engagement',
       year: '2025',
       role: 'Marketing strategist — full cycle, AI-augmented',
       span: '~10 weeks',
-      tags: ['LLMs', 'K-Means segmentation', 'Synthetic ICP generation', 'Creative testing', 'Statistical analysis'],
+      tags: ['Marketing strategy', 'K-Means segmentation', 'ICP development', 'Pricing & positioning', 'Creative testing', 'Statistical analysis', 'Executive memos', 'Synthetic personas', 'LLMs', 'Python', 'Kellogg AIML 901'],
       summary:
         "A full-cycle AI marketing engagement, from segmentation to executive memo.",
       problem:

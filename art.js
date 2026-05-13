@@ -6,6 +6,21 @@ function ProjectArt({
   ratio = '4/3',
   small = false
 }) {
+  if (project.video) {
+    return /*#__PURE__*/React.createElement("video", {
+      src: project.video,
+      autoPlay: true,
+      muted: true,
+      loop: true,
+      playsInline: true,
+      style: {
+        width: '100%',
+        height: '100%',
+        display: 'block',
+        objectFit: 'cover'
+      }
+    });
+  }
   if (project.image) {
     return /*#__PURE__*/React.createElement("img", {
       src: project.image,

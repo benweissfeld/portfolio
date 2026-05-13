@@ -6,7 +6,9 @@ const { useState: useStateP, useEffect: useEffectP, useMemo: useMemoP } = React;
 
 function HomePage({ go, openProject, onContact, tweaks }) {
   const { persona, projects } = window.PORTFOLIO;
-  const featured = projects.slice(0, 3);
+  const featured = ['frug', 'bose-presence', 'segue-audio']
+    .map(id => projects.find(p => p.id === id))
+    .filter(Boolean);
   const heroLayout = tweaks.heroLayout;
   const cardVariant = tweaks.cardStyle;
 
@@ -56,7 +58,7 @@ function HeroLeft({ persona, go }) {
           <span className="dot-live" /> AVAILABLE · Q3 2026
         </div>
         <h1 className="display fade-in d1">
-          <em>Building</em> things.
+          things I've <em>made.</em>
         </h1>
         <p className="lede fade-in d2">
           I'm {persona.first}, finishing my MBA at Kellogg and working at the intersection
@@ -266,7 +268,7 @@ function SelectedWorks({ projects, cardVariant, openProject, go }) {
         <div className="sel-head">
           <div>
             <h2>Selected <em>works</em>.</h2>
-            <p>Five AI-native products built solo. frug. is the flagship — the others are the proof the impulse generalizes.</p>
+            <p>Five AI-native products I've built</p>
           </div>
           <a className="rule-mono" onClick={() => go('works')}
              style={{ cursor: 'pointer', maxWidth: 220 }} data-hov>
@@ -487,7 +489,12 @@ function ProjectPage({ projectId, go, openProject, onContact }) {
 
       <section className="proj-art fade-in d2">
         <div className="container">
-          {p.heroImages?.length >= 2 ? (
+          {p.video ? (
+            <div className="frame">
+              <video src={p.video} autoPlay muted loop playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            </div>
+          ) : p.heroImages?.length >= 2 ? (
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', alignItems: 'flex-start' }}>
               {p.heroImages.map((src, i) => (
                 <img key={i} src={src} alt="" style={{ height: 320, width: 'auto', display: 'block', borderRadius: 10, border: '1px solid var(--line)' }} />
@@ -517,13 +524,13 @@ function ProjectPage({ projectId, go, openProject, onContact }) {
         <div className={`proj-detail-strip${p.images?.length === 1 ? ' single' : ''}`}>
           <div className="frame">
             {p.images?.[0]
-              ? <img src={p.images[0]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              ? <img src={p.images[0]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.imagesPositions?.[0] || 'center', display: 'block' }} />
               : <ProjectArt project={{ ...p, shape: 'lines' }} />}
           </div>
           {(p.images?.length ?? 0) !== 1 && (
             <div className="frame">
               {p.images?.[1]
-                ? <img src={p.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                ? <img src={p.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: p.imagesPositions?.[1] || 'center', display: 'block' }} />
                 : <ProjectArt project={{ ...p, shape: 'grid' }} />}
             </div>
           )}
@@ -572,19 +579,17 @@ function AboutPage({ go, onContact }) {
   const { persona } = window.PORTFOLIO;
   const skills = {
     'Build': [
-      'LLM integration', 'Prompt engineering', 'Agentic workflows',
-      'Browser extensions', 'Full-stack', 'API integrations',
-      'Real-time systems', 'Conversational AI', 'Audio processing',
-      'Market research', 'Segmentation analysis', '0-to-1 shipping',
+      'Market research', 'Segmentation analysis', 'ICP development',
+      'Positioning & pricing', 'Creative testing', 'Statistical analysis',
+      'Executive memos', 'LLM integration', 'Prompt engineering',
+      'Agentic workflows', '0-to-1 shipping', 'First-principles thinking',
     ],
     'Stack': [
-      'TypeScript', 'JavaScript', 'React', 'Next.js', 'Node.js', 'Python',
-      'Anthropic API', 'OpenAI API', 'Plaid API', 'Chrome APIs',
-      'Web Audio API', 'HTML / CSS',
+      'Anthropic API', 'OpenAI API', 'Plaid API', 'Chrome APIs', 'Python',
     ],
     'Tools': [
-      'Cursor', 'Claude', 'ChatGPT', 'GitHub', 'VS Code',
-      'Figma', 'Notion', 'Linear', 'Slack', 'Miro', 'Loom', 'Excel / Sheets',
+      'Claude', 'ChatGPT', 'Cursor', 'Figma', 'Notion',
+      'Linear', 'Slack', 'Miro', 'Loom', 'Excel / Sheets',
     ],
   };
   return (

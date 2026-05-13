@@ -18,7 +18,7 @@ function HomePage({
     persona,
     projects
   } = window.PORTFOLIO;
-  const featured = projects.slice(0, 3);
+  const featured = ['frug', 'bose-presence', 'segue-audio'].map(id => projects.find(p => p.id === id)).filter(Boolean);
   const heroLayout = tweaks.heroLayout;
   const cardVariant = tweaks.cardStyle;
   return /*#__PURE__*/React.createElement("div", {
@@ -80,7 +80,7 @@ function HeroLeft({
     className: "dot-live"
   }), " AVAILABLE \xB7 Q3 2026"), /*#__PURE__*/React.createElement("h1", {
     className: "display fade-in d1"
-  }, /*#__PURE__*/React.createElement("em", null, "Building"), " things."), /*#__PURE__*/React.createElement("p", {
+  }, "things I've ", /*#__PURE__*/React.createElement("em", null, "made.")), /*#__PURE__*/React.createElement("p", {
     className: "lede fade-in d2"
   }, "I'm ", persona.first, ", finishing my MBA at Kellogg and working at the intersection of strategy, marketing, analytics, and AI. My path has taken me through messy, high-pressure environments where first-principles thinking helped me turn ambiguity into clear, data-driven decisions and action."), /*#__PURE__*/React.createElement("div", {
     className: "hero-cta fade-in d3"
@@ -335,7 +335,7 @@ function SelectedWorks({
     }
   }, /*#__PURE__*/React.createElement("span", null, "(01)"), /*#__PURE__*/React.createElement("span", null, "SELECTED WORKS")), /*#__PURE__*/React.createElement("div", {
     className: "sel-head"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Selected ", /*#__PURE__*/React.createElement("em", null, "works"), "."), /*#__PURE__*/React.createElement("p", null, "Five AI-native products built solo. frug. is the flagship \u2014 the others are the proof the impulse generalizes.")), /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Selected ", /*#__PURE__*/React.createElement("em", null, "works"), "."), /*#__PURE__*/React.createElement("p", null, "Five AI-native products I've built")), /*#__PURE__*/React.createElement("a", {
     className: "rule-mono",
     onClick: () => go('works'),
     style: {
@@ -582,7 +582,21 @@ function ProjectPage({
     className: "proj-art fade-in d2"
   }, /*#__PURE__*/React.createElement("div", {
     className: "container"
-  }, p.heroImages?.length >= 2 ? /*#__PURE__*/React.createElement("div", {
+  }, p.video ? /*#__PURE__*/React.createElement("div", {
+    className: "frame"
+  }, /*#__PURE__*/React.createElement("video", {
+    src: p.video,
+    autoPlay: true,
+    muted: true,
+    loop: true,
+    playsInline: true,
+    style: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      display: 'block'
+    }
+  })) : p.heroImages?.length >= 2 ? /*#__PURE__*/React.createElement("div", {
     style: {
       display: 'flex',
       gap: 16,
@@ -628,6 +642,7 @@ function ProjectPage({
       width: '100%',
       height: '100%',
       objectFit: 'cover',
+      objectPosition: p.imagesPositions?.[0] || 'center',
       display: 'block'
     }
   }) : /*#__PURE__*/React.createElement(ProjectArt, {
@@ -644,6 +659,7 @@ function ProjectPage({
       width: '100%',
       height: '100%',
       objectFit: 'cover',
+      objectPosition: p.imagesPositions?.[1] || 'center',
       display: 'block'
     }
   }) : /*#__PURE__*/React.createElement(ProjectArt, {
@@ -709,9 +725,9 @@ function AboutPage({
     persona
   } = window.PORTFOLIO;
   const skills = {
-    'Build': ['LLM integration', 'Prompt engineering', 'Agentic workflows', 'Browser extensions', 'Full-stack', 'API integrations', 'Real-time systems', 'Conversational AI', 'Audio processing', 'Market research', 'Segmentation analysis', '0-to-1 shipping'],
-    'Stack': ['TypeScript', 'JavaScript', 'React', 'Next.js', 'Node.js', 'Python', 'Anthropic API', 'OpenAI API', 'Plaid API', 'Chrome APIs', 'Web Audio API', 'HTML / CSS'],
-    'Tools': ['Cursor', 'Claude', 'ChatGPT', 'GitHub', 'VS Code', 'Figma', 'Notion', 'Linear', 'Slack', 'Miro', 'Loom', 'Excel / Sheets']
+    'Build': ['Market research', 'Segmentation analysis', 'ICP development', 'Positioning & pricing', 'Creative testing', 'Statistical analysis', 'Executive memos', 'LLM integration', 'Prompt engineering', 'Agentic workflows', '0-to-1 shipping', 'First-principles thinking'],
+    'Stack': ['Anthropic API', 'OpenAI API', 'Plaid API', 'Chrome APIs', 'Python'],
+    'Tools': ['Claude', 'ChatGPT', 'Cursor', 'Figma', 'Notion', 'Linear', 'Slack', 'Miro', 'Loom', 'Excel / Sheets']
   };
   return /*#__PURE__*/React.createElement("div", {
     className: "page-anim"

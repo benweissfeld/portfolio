@@ -2,6 +2,15 @@
 // a `shape` token and a `palette` of 3 colors. No photos required.
 
 function ProjectArt({ project, ratio = '4/3', small = false }) {
+  if (project.video) {
+    return (
+      <video
+        src={project.video}
+        autoPlay muted loop playsInline
+        style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }}
+      />
+    );
+  }
   if (project.image) {
     return (
       <img
